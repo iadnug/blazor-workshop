@@ -20,13 +20,3 @@ public class Order
 
     public string GetFormattedTotalPrice() => GetTotalPrice().ToString("0.00");
 }
-
-[JsonSourceGenerationOptions(GenerationMode = JsonSourceGenerationMode.Default, PropertyNamingPolicy = JsonKnownNamingPolicy.CamelCase)]
-[JsonSerializable(typeof(Order))]
-[JsonSerializable(typeof(OrderWithStatus))]
-[JsonSerializable(typeof(List<OrderWithStatus>))]
-[JsonSerializable(typeof(Pizza))]
-[JsonSerializable(typeof(List<PizzaSpecial>))]
-[JsonSerializable(typeof(List<Topping>))]
-[JsonSerializable(typeof(Topping))]
-public partial class OrderContext : JsonSerializerContext { }

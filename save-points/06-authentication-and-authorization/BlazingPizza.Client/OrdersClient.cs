@@ -12,16 +12,16 @@ public class OrdersClient
     }
 
     public async Task<IEnumerable<OrderWithStatus>> GetOrders() =>
-            await httpClient.GetFromJsonAsync("orders", OrderContext.Default.ListOrderWithStatus);
+            await httpClient.GetFromJsonAsync<List<OrderWithStatus>>("orders");
 
 
     public async Task<OrderWithStatus> GetOrder(int orderId) =>
-            await httpClient.GetFromJsonAsync($"orders/{orderId}", OrderContext.Default.OrderWithStatus);
+            await httpClient.GetFromJsonAsync<OrderWithStatus>($"orders/{orderId}");
 
 
     public async Task<int> PlaceOrder(Order order)
     {
-        var response = await httpClient.PostAsJsonAsync("orders", order, OrderContext.Default.Order);
+        var response = await httpClient.PostAsJsonAsync("orders", order);
         response.EnsureSuccessStatusCode();
         var orderId = await response.Content.ReadFromJsonAsync<int>();
         return orderId;

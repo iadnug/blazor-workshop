@@ -65,7 +65,7 @@
 
     protected async override Task OnInitializedAsync()
     {
-        toppings = await HttpClient.GetFromJsonAsync("toppings", BlazingPizza.OrderContext.Default.ListTopping);
+        toppings = await HttpClient.GetFromJsonAsync<List<Topping>>("toppings");
     }
 
     void ToppingSelected(ChangeEventArgs e)
