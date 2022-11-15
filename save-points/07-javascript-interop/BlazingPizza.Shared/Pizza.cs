@@ -38,7 +38,3 @@ public class Pizza
         return GetTotalPrice().ToString("0.00");
     }
 }
-
-[JsonSourceGenerationOptions(GenerationMode = JsonSourceGenerationMode.Serialization)]
-[JsonSerializable(typeof(Pizza))]
-public partial class PizzaContext : JsonSerializerContext { }
