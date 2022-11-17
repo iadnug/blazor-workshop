@@ -168,31 +168,31 @@ Open `Address.cs` from the `BlazingPizza.Shared` project, and put a `[Required]`
 ```csharp
 using System.ComponentModel.DataAnnotations;
 
-namespace BlazingPizza
+namespace BlazingPizza;
+
+public class Address
 {
-    public class Address
-    {
-        public int Id { get; set; }
+    public int Id { get; set; }
 
-        [Required, MaxLength(100)]
-        public string Name { get; set; }
+    [Required, MaxLength(100)]
+    public string Name { get; set; }
 
-        [Required, MaxLength(100)]
-        public string Line1 { get; set; }
+    [Required, MaxLength(100)]
+    public string Line1 { get; set; }
 
-        [MaxLength(100)]
-        public string Line2 { get; set; }
+    [MaxLength(100)]
+    public string Line2 { get; set; }
 
-        [Required, MaxLength(50)]
-        public string City { get; set; }
+    [Required, MaxLength(50)]
+    public string City { get; set; }
 
-        [Required, MaxLength(20)]
-        public string Region { get; set; }
+    [Required, MaxLength(20)]
+    public string Region { get; set; }
 
-        [Required, MaxLength(20)]
-        public string PostalCode { get; set; }
-    }
+    [Required, MaxLength(20)]
+    public string PostalCode { get; set; }
 }
+
 ```
 
 Now, after you recompile and run your application, you should be able to observe the validation rules being enforced on the server. If you try to submit an order with a blank delivery address, then the server will reject the request and you'll see an HTTP 400 ("Bad Request") error in the browser's *Network* tab:
